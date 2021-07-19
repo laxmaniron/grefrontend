@@ -1,24 +1,32 @@
 import logo from './logo.svg';
-import './App.css';
+import Vocabs from "./components/Vocabs"
+import Header from "./components/Header"
+import AddWord from "./components/AddWord"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import { Provider } from './context';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom" 
+
 
 function App() {
   return (
+    <Provider>
+      
+      <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header/>
+     
+      
+
+      <Switch>
+        <Route exact path = "/" component = {Vocabs} />
+        <Route exact path = "/word/add" component = {AddWord} />
+      </Switch>
+     
     </div>
+    </Router>
+
+    </Provider>
   );
 }
 
